@@ -94,6 +94,12 @@
     <Content Include="DxLibW_x64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Image\chiritori_blue.png" />
+    <Content Include="Image\chiritori_green.png" />
+    <Content Include="Image\chiritori_red.png" />
+    <Content Include="Image\chiritori_yellow.png" />
+    <Content Include="Image\gomi.png" />
+    <Content Include="Image\wood_floor.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
