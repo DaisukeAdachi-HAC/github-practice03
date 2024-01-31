@@ -6,7 +6,7 @@ namespace Chiritori
 {
     public class Game
     {
-        Chiritori chiritori;
+        Chiritori[] chiritories;
         Gomi gomi; // ゴミ
 
         public void Init()
@@ -14,25 +14,30 @@ namespace Chiritori
             Image.Load(); // 画像の読み込み
             MyRandom.Init(); // MyRandomの初期化
             Input.Init(); // Inputの初期化
-            chiritori = new Chiritori(); // チリトリーの生成
+            chiritories = new Chiritori[2]; // チリトリーの配列を生成
+            chiritories[0] = new Chiritori(DX.PAD_INPUT_1, Image.chiritoriGreen); // Player1生成
+            chiritories[1] = new Chiritori(DX.PAD_INPUT_2, Image.chiritoriRed); // Player2生成
             gomi = new Gomi(); // ゴミの生成
         }
 
         public void Update()
         {
             Input.Update(); // Inputの更新
-
-            chiritori.Update(); // チリトリーの更新
-
-            // チリトリーとゴミの距離を調べる
-            float deltaX = chiritori.x - gomi.x; // x方向の差分
-            float deltaY = chiritori.y - gomi.y; // y方向の差分
-            float distance = (float)Math.Sqrt(deltaX * deltaX + deltaY * deltaY); // 距離
-
-            // 距離が50以下なら
-            if (distance <= 50)
+            for (int i = 0; i < chiritories.Length; i++)
             {
-                gomi.ResetPosition(); // ゴミの場所をリセット
+                Chiritori chiritori = chiritories[i];
+                chiritori.Update(); // チリトリーの更新
+
+                // チリトリーとゴミの距離を調べる
+                float deltaX = chiritori.x - gomi.x; // x方向の差分
+                float deltaY = chiritori.y - gomi.y; // y方向の差分
+                float distance = (float)Math.Sqrt(deltaX * deltaX + deltaY * deltaY); // 距離
+
+                // 距離が50以下なら
+                if (distance <= 50)
+                {
+                    gomi.ResetPosition(); // ゴミの場所をリセット
+                }
             }
         }
 
@@ -40,7 +45,11 @@ namespace Chiritori
         {
             DX.DrawGraph(0, 0, Image.woodFloor); // 背景描画
             gomi.Draw(); // ゴミ描画
-            chiritori.Draw(); // チリトリー描画
+            for (int i = 0; i < chiritories.Length; i++)
+            {
+                chiritories[i].Draw();
+            }
         }
     }
 }
+
