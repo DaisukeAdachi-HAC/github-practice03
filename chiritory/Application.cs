@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 
-namespace chiritory
+namespace Chiritori
 {
     internal class Application
     {

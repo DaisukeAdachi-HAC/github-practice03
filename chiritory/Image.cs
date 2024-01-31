@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DxLibDLL;
 
-namespace chiritory
+namespace Chiritori
 {
     internal class Image
     {

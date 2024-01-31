@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace chiritory
+namespace Chiritori
 {
     public static class Screen
     {
